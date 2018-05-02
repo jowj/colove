@@ -1,8 +1,13 @@
 import subprocess
 
 def dockerrun():
-    args = ['docker', 'run', '-it','colove:latest']
-    subprocess.Popen(args)
+    args = [
+        'docker', 'run',
+        '--rm',
+        '--interactive',
+        '--tty',
+        'colove:latest']
+    subprocess.run(args)
 
 if __name__ == '__main__':
     dockerrun()
