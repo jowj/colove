@@ -42,15 +42,16 @@ RUN apk add \
 
 # configure a user
 RUN addgroup -S "$username" \
-    && adduser -S -G "$username" -s /bin/bash "$username"
+    && adduser -S -G "$username" -s /bin/bash "$username" \
+    && chpasswd
 
-ARG enablesudo="true"
-RUN if test "$enablesudo"; then true \
-        && echo "ENABLING PASSWORDLESS SUDO" >&2 \
-        && echo "sudo should only be enabled in development, since root privs in your container can probably be leveraged to root privs on your host" >&2 \
-        && echo "$username ALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/$username" \
-        && chmod 0440 "/etc/sudoers.d/$username" \
-; fi
+# ARG enablesudo="true"
+# RUN if test "$enablesudo"; then true \
+#         && echo "ENABLING PASSWORDLESS SUDO" >&2 \
+#         && echo "sudo should only be enabled in development, since root privs in your container can probably be leveraged to root privs on your host" >&2 \
+#         && echo "$username ALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/$username" \
+#         && chmod 0440 "/etc/sudoers.d/$username" \
+# ; fi
 
 
 USER $username
