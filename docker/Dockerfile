@@ -43,8 +43,7 @@ RUN apk add \
 # configure a user
 RUN addgroup -S "$username" \
     && adduser -S -G "$username" -s /bin/bash "$username" \
-    && chpasswd
-
+    
 # ARG enablesudo="true"
 # RUN if test "$enablesudo"; then true \
 #         && echo "ENABLING PASSWORDLESS SUDO" >&2 \
