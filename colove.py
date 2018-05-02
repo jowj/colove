@@ -6,6 +6,7 @@ def dockerrun():
         '--rm',
         '--interactive',
         '--tty',
+        '--mount', 'source=agares,target=/colove',
         'colove:latest']
     subprocess.run(args)
 
