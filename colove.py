@@ -5,7 +5,7 @@ import pdb
 SCRIPTPATH = os.path.realpath(__file__)
 SCRIPTDIR = os.path.dirname(SCRIPTPATH)
 DOCKERDIR = os.path.join(SCRIPTDIR, 'docker')
-COLOVEDIR = '/home/colove'
+COLOVEDIR = '/home/colove/host'
 
 def dockerrun(
     colovevolperms='rw', hostname='colove'):
