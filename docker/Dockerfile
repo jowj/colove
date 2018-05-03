@@ -3,6 +3,7 @@ LABEL maintainer "me@jowj.net"
 
 ARG username=colove
 ARG homedir=/home/$username
+ENV colovevol=/colove
 
 # make container livable
 RUN apk update \
@@ -43,6 +44,12 @@ RUN apk add \
 # configure a user
 RUN addgroup -S "$username" \
     && adduser -S -G "$username" -s /bin/bash "$username"
+
+# copy over any files needed for buildtime steps. things used at runtime can live in colove.py
+RUN mkdir $colovevol \
+    && chown -R "$username:$username" "$homedir" \
+    && ln -sf "$colovevol/agares/" "$homedir/." \
+    && ln -sf agares/.bashrc agares/.tmux.conf "$homedir"
     
 # ARG enablesudo="true"
 # RUN if test "$enablesudo"; then true \
