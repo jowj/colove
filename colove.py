@@ -1,12 +1,21 @@
+import os
 import subprocess
+import pdb
 
-def dockerrun():
+SCRIPTPATH = os.path.realpath(__file__)
+SCRIPTDIR = os.path.dirname(SCRIPTPATH)
+DOCKERDIR = os.path.join(SCRIPTDIR, 'docker')
+COLOVEDIR = '/home/colove'
+
+def dockerrun(
+    colovevolperms='rw', hostname='colove'):
     args = [
         'docker', 'run',
         '--rm',
         '--interactive',
         '--tty',
-        '--mount', 'source=agares,target=/colove',
+        '--volume', f'{SCRIPTDIR}:{COLOVEDIR}:{colovevolperms}',
+        '--hostname', hostname,
         'colove:latest']
     subprocess.run(args)
 
