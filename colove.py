@@ -4,7 +4,7 @@ import pdb
 SCRIPTPATH = os.path.realpath(__file__)
 SCRIPTDIR = os.path.dirname(SCRIPTPATH)
 DOCKERDIR = os.path.join(SCRIPTDIR, 'docker')
-COLOVEDIR = '/colove'
+COLOVEDIR = '/home/colove/host'
 
 def dockerrun(
     colovevolperms='rw', hostname='colove'):
@@ -15,8 +15,8 @@ def dockerrun(
         '--tty',
         '--volume', f'{SCRIPTDIR}:{COLOVEDIR}:{colovevolperms}',
         '--hostname', hostname,
-        'colove:latest',
+        'colove:latest']
     subprocess.run(args)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     dockerrun()
