@@ -30,7 +30,8 @@ RUN apk update \
         python2-dev \
         python3-dev \
         libffi-dev \
-        openssl-dev
+        openssl-dev \
+        ncurses
 
 # install more specific applications
 RUN apk add \
