@@ -1,4 +1,6 @@
 import os
+import sys
+import argparse
 import subprocess
 import pdb
 
@@ -19,5 +21,24 @@ def dockerrun(
         'colove:latest']
     subprocess.run(args)
 
+def dockerbuild():
+    args = [
+        'docker', 'build',
+        DOCKERDIR,
+        '--tag',
+        'colove:latest']
+    subprocess.run(args)
+
+def main(argv):
+    if argv == ['-r']:
+        dockerrun()
+    if argv == ['-b']:
+        dockerbuild()
+
 if __name__ == '__main__':
-    dockerrun()
+    parse = argparse.ArgumentParser(description='what docker operation do you want?')
+    parse.add_argument('-r','--run',help='runs the container',action='store_true')
+    parse.add_argument('-b','--build',help='builds the container',action='store_true')
+
+    args = parse.parse_args()
+    main(sys.argv[1:])
