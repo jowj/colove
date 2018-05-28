@@ -20,6 +20,7 @@ RUN apk update \
         python3 python3-doc \
         sudo sudo-doc \
         tmux tmux-doc \
+        p7zip p7zip-doc \ 
     && python3 -m pip install \
         awscli \
     && apk add \
