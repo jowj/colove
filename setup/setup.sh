@@ -4,7 +4,6 @@ umask 077
 
 # prompt for decrypt and extract secrets
 gpg --output ~/.ssh.tar --decrypt /colove/setup/secrets/ssh-secrets.tar.gpg
-mkdir .ssh
 7z x ~/.ssh.tar
 
 # start up the ssh agent.
