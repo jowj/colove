@@ -2,10 +2,17 @@
 a container of love
 
 ## usage
+### prep
 First, build the container:
 `py colove.py -b`
 
 Then, run the container and attach:
 `py colove.py -r`
 
-These do magic that is baked into the script that I should update here later.
+### in the container
+1. `. /colove/setup/setup.sh`
+2. pass in your gpg key
+3. add ssh keys to your ssh-agent (TODO: fucking do this automatically)
+   - `ssh-add ~/path/to/file`
+4. run any deploys you want
+
