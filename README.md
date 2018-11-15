@@ -15,4 +15,3 @@ Then, run the container and attach:
 3. add ssh keys to your ssh-agent (TODO: fucking do this automatically)
    - `ssh-add ~/path/to/file`
 4. run any deploys you want
-
